@@ -73,7 +73,10 @@ impl Builder {
                 let s = self.new_state();
                 let a = self.new_state();
                 self.add_transition(s, a, &c.to_string());
-                let frag = Fragment { start: s, accept: a };
+                let frag = Fragment {
+                    start: s,
+                    accept: a,
+                };
                 self.emit(format!("literal '{}'", c), frag);
                 frag
             }

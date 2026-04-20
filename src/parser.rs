@@ -26,10 +26,7 @@ pub fn parse(src: &str) -> Result<Ast, String> {
     };
     let ast = p.parse_alt()?;
     if p.pos != p.src.len() {
-        return Err(format!(
-            "unexpected '{}' at pos {}",
-            p.src[p.pos], p.pos
-        ));
+        return Err(format!("unexpected '{}' at pos {}", p.src[p.pos], p.pos));
     }
     Ok(ast)
 }
@@ -122,7 +119,10 @@ impl Parser {
 }
 
 fn is_literal_char(c: char) -> bool {
-    !matches!(c, '|' | '*' | '+' | '?' | '(' | ')' | '.' | '[' | ']' | '\\')
+    !matches!(
+        c,
+        '|' | '*' | '+' | '?' | '(' | ')' | '.' | '[' | ']' | '\\'
+    )
 }
 
 #[cfg(test)]
