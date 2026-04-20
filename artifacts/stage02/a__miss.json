@@ -1,0 +1,68 @@
+{
+  "kind": "run",
+  "input": "b",
+  "steps": [
+    {
+      "description": "start: ε-closure({0})",
+      "nfa": {
+        "states": [
+          0,
+          1
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 1,
+            "label": "a"
+          }
+        ],
+        "start": 0,
+        "accept": 1
+      },
+      "active": [
+        0
+      ],
+      "input_pos": 0
+    },
+    {
+      "description": "consume 'b' at pos 0 → 1",
+      "nfa": {
+        "states": [
+          0,
+          1
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 1,
+            "label": "a"
+          }
+        ],
+        "start": 0,
+        "accept": 1
+      },
+      "active": [],
+      "input_pos": 1
+    },
+    {
+      "description": "mismatch: accept 1 not active at end of input",
+      "nfa": {
+        "states": [
+          0,
+          1
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 1,
+            "label": "a"
+          }
+        ],
+        "start": 0,
+        "accept": 1
+      },
+      "active": [],
+      "input_pos": 1
+    }
+  ]
+}

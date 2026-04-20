@@ -1,0 +1,539 @@
+{
+  "kind": "run",
+  "input": "aabc",
+  "steps": [
+    {
+      "description": "start: ε-closure({6})",
+      "nfa": {
+        "states": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 1,
+            "label": "a"
+          },
+          {
+            "from": 2,
+            "to": 3,
+            "label": "b"
+          },
+          {
+            "from": 4,
+            "to": 0,
+            "label": "ε"
+          },
+          {
+            "from": 1,
+            "to": 5,
+            "label": "ε"
+          },
+          {
+            "from": 4,
+            "to": 2,
+            "label": "ε"
+          },
+          {
+            "from": 3,
+            "to": 5,
+            "label": "ε"
+          },
+          {
+            "from": 6,
+            "to": 4,
+            "label": "ε"
+          },
+          {
+            "from": 6,
+            "to": 7,
+            "label": "ε"
+          },
+          {
+            "from": 5,
+            "to": 4,
+            "label": "ε"
+          },
+          {
+            "from": 5,
+            "to": 7,
+            "label": "ε"
+          },
+          {
+            "from": 8,
+            "to": 9,
+            "label": "c"
+          },
+          {
+            "from": 7,
+            "to": 8,
+            "label": "ε"
+          }
+        ],
+        "start": 6,
+        "accept": 9
+      },
+      "active": [
+        0,
+        2,
+        4,
+        6,
+        7,
+        8
+      ],
+      "input_pos": 0
+    },
+    {
+      "description": "consume 'a' at pos 0 → 1",
+      "nfa": {
+        "states": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 1,
+            "label": "a"
+          },
+          {
+            "from": 2,
+            "to": 3,
+            "label": "b"
+          },
+          {
+            "from": 4,
+            "to": 0,
+            "label": "ε"
+          },
+          {
+            "from": 1,
+            "to": 5,
+            "label": "ε"
+          },
+          {
+            "from": 4,
+            "to": 2,
+            "label": "ε"
+          },
+          {
+            "from": 3,
+            "to": 5,
+            "label": "ε"
+          },
+          {
+            "from": 6,
+            "to": 4,
+            "label": "ε"
+          },
+          {
+            "from": 6,
+            "to": 7,
+            "label": "ε"
+          },
+          {
+            "from": 5,
+            "to": 4,
+            "label": "ε"
+          },
+          {
+            "from": 5,
+            "to": 7,
+            "label": "ε"
+          },
+          {
+            "from": 8,
+            "to": 9,
+            "label": "c"
+          },
+          {
+            "from": 7,
+            "to": 8,
+            "label": "ε"
+          }
+        ],
+        "start": 6,
+        "accept": 9
+      },
+      "active": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        8
+      ],
+      "input_pos": 1
+    },
+    {
+      "description": "consume 'a' at pos 1 → 2",
+      "nfa": {
+        "states": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 1,
+            "label": "a"
+          },
+          {
+            "from": 2,
+            "to": 3,
+            "label": "b"
+          },
+          {
+            "from": 4,
+            "to": 0,
+            "label": "ε"
+          },
+          {
+            "from": 1,
+            "to": 5,
+            "label": "ε"
+          },
+          {
+            "from": 4,
+            "to": 2,
+            "label": "ε"
+          },
+          {
+            "from": 3,
+            "to": 5,
+            "label": "ε"
+          },
+          {
+            "from": 6,
+            "to": 4,
+            "label": "ε"
+          },
+          {
+            "from": 6,
+            "to": 7,
+            "label": "ε"
+          },
+          {
+            "from": 5,
+            "to": 4,
+            "label": "ε"
+          },
+          {
+            "from": 5,
+            "to": 7,
+            "label": "ε"
+          },
+          {
+            "from": 8,
+            "to": 9,
+            "label": "c"
+          },
+          {
+            "from": 7,
+            "to": 8,
+            "label": "ε"
+          }
+        ],
+        "start": 6,
+        "accept": 9
+      },
+      "active": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        8
+      ],
+      "input_pos": 2
+    },
+    {
+      "description": "consume 'b' at pos 2 → 3",
+      "nfa": {
+        "states": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 1,
+            "label": "a"
+          },
+          {
+            "from": 2,
+            "to": 3,
+            "label": "b"
+          },
+          {
+            "from": 4,
+            "to": 0,
+            "label": "ε"
+          },
+          {
+            "from": 1,
+            "to": 5,
+            "label": "ε"
+          },
+          {
+            "from": 4,
+            "to": 2,
+            "label": "ε"
+          },
+          {
+            "from": 3,
+            "to": 5,
+            "label": "ε"
+          },
+          {
+            "from": 6,
+            "to": 4,
+            "label": "ε"
+          },
+          {
+            "from": 6,
+            "to": 7,
+            "label": "ε"
+          },
+          {
+            "from": 5,
+            "to": 4,
+            "label": "ε"
+          },
+          {
+            "from": 5,
+            "to": 7,
+            "label": "ε"
+          },
+          {
+            "from": 8,
+            "to": 9,
+            "label": "c"
+          },
+          {
+            "from": 7,
+            "to": 8,
+            "label": "ε"
+          }
+        ],
+        "start": 6,
+        "accept": 9
+      },
+      "active": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        7,
+        8
+      ],
+      "input_pos": 3
+    },
+    {
+      "description": "consume 'c' at pos 3 → 4",
+      "nfa": {
+        "states": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 1,
+            "label": "a"
+          },
+          {
+            "from": 2,
+            "to": 3,
+            "label": "b"
+          },
+          {
+            "from": 4,
+            "to": 0,
+            "label": "ε"
+          },
+          {
+            "from": 1,
+            "to": 5,
+            "label": "ε"
+          },
+          {
+            "from": 4,
+            "to": 2,
+            "label": "ε"
+          },
+          {
+            "from": 3,
+            "to": 5,
+            "label": "ε"
+          },
+          {
+            "from": 6,
+            "to": 4,
+            "label": "ε"
+          },
+          {
+            "from": 6,
+            "to": 7,
+            "label": "ε"
+          },
+          {
+            "from": 5,
+            "to": 4,
+            "label": "ε"
+          },
+          {
+            "from": 5,
+            "to": 7,
+            "label": "ε"
+          },
+          {
+            "from": 8,
+            "to": 9,
+            "label": "c"
+          },
+          {
+            "from": 7,
+            "to": 8,
+            "label": "ε"
+          }
+        ],
+        "start": 6,
+        "accept": 9
+      },
+      "active": [
+        9
+      ],
+      "input_pos": 4
+    },
+    {
+      "description": "match: accept 9 active after consuming 4 chars",
+      "nfa": {
+        "states": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 1,
+            "label": "a"
+          },
+          {
+            "from": 2,
+            "to": 3,
+            "label": "b"
+          },
+          {
+            "from": 4,
+            "to": 0,
+            "label": "ε"
+          },
+          {
+            "from": 1,
+            "to": 5,
+            "label": "ε"
+          },
+          {
+            "from": 4,
+            "to": 2,
+            "label": "ε"
+          },
+          {
+            "from": 3,
+            "to": 5,
+            "label": "ε"
+          },
+          {
+            "from": 6,
+            "to": 4,
+            "label": "ε"
+          },
+          {
+            "from": 6,
+            "to": 7,
+            "label": "ε"
+          },
+          {
+            "from": 5,
+            "to": 4,
+            "label": "ε"
+          },
+          {
+            "from": 5,
+            "to": 7,
+            "label": "ε"
+          },
+          {
+            "from": 8,
+            "to": 9,
+            "label": "c"
+          },
+          {
+            "from": 7,
+            "to": 8,
+            "label": "ε"
+          }
+        ],
+        "start": 6,
+        "accept": 9
+      },
+      "active": [
+        9
+      ],
+      "input_pos": 4
+    }
+  ]
+}

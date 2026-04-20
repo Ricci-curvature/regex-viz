@@ -1,0 +1,98 @@
+{
+  "kind": "run",
+  "input": "",
+  "steps": [
+    {
+      "description": "start: ε-closure({2})",
+      "nfa": {
+        "states": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 1,
+            "label": "a"
+          },
+          {
+            "from": 2,
+            "to": 0,
+            "label": "ε"
+          },
+          {
+            "from": 2,
+            "to": 3,
+            "label": "ε"
+          },
+          {
+            "from": 1,
+            "to": 0,
+            "label": "ε"
+          },
+          {
+            "from": 1,
+            "to": 3,
+            "label": "ε"
+          }
+        ],
+        "start": 2,
+        "accept": 3
+      },
+      "active": [
+        0,
+        2,
+        3
+      ],
+      "input_pos": 0
+    },
+    {
+      "description": "match: accept 3 active after consuming 0 chars",
+      "nfa": {
+        "states": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 1,
+            "label": "a"
+          },
+          {
+            "from": 2,
+            "to": 0,
+            "label": "ε"
+          },
+          {
+            "from": 2,
+            "to": 3,
+            "label": "ε"
+          },
+          {
+            "from": 1,
+            "to": 0,
+            "label": "ε"
+          },
+          {
+            "from": 1,
+            "to": 3,
+            "label": "ε"
+          }
+        ],
+        "start": 2,
+        "accept": 3
+      },
+      "active": [
+        0,
+        2,
+        3
+      ],
+      "input_pos": 0
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "kind": "run",
+  "input": "c",
+  "steps": [
+    {
+      "description": "start: ε-closure({4})",
+      "nfa": {
+        "states": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 1,
+            "label": "a"
+          },
+          {
+            "from": 2,
+            "to": 3,
+            "label": "b"
+          },
+          {
+            "from": 4,
+            "to": 0,
+            "label": "ε"
+          },
+          {
+            "from": 1,
+            "to": 5,
+            "label": "ε"
+          },
+          {
+            "from": 4,
+            "to": 2,
+            "label": "ε"
+          },
+          {
+            "from": 3,
+            "to": 5,
+            "label": "ε"
+          }
+        ],
+        "start": 4,
+        "accept": 5
+      },
+      "active": [
+        0,
+        2,
+        4
+      ],
+      "input_pos": 0
+    },
+    {
+      "description": "consume 'c' at pos 0 → 1",
+      "nfa": {
+        "states": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 1,
+            "label": "a"
+          },
+          {
+            "from": 2,
+            "to": 3,
+            "label": "b"
+          },
+          {
+            "from": 4,
+            "to": 0,
+            "label": "ε"
+          },
+          {
+            "from": 1,
+            "to": 5,
+            "label": "ε"
+          },
+          {
+            "from": 4,
+            "to": 2,
+            "label": "ε"
+          },
+          {
+            "from": 3,
+            "to": 5,
+            "label": "ε"
+          }
+        ],
+        "start": 4,
+        "accept": 5
+      },
+      "active": [],
+      "input_pos": 1
+    },
+    {
+      "description": "mismatch: accept 5 not active at end of input",
+      "nfa": {
+        "states": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 1,
+            "label": "a"
+          },
+          {
+            "from": 2,
+            "to": 3,
+            "label": "b"
+          },
+          {
+            "from": 4,
+            "to": 0,
+            "label": "ε"
+          },
+          {
+            "from": 1,
+            "to": 5,
+            "label": "ε"
+          },
+          {
+            "from": 4,
+            "to": 2,
+            "label": "ε"
+          },
+          {
+            "from": 3,
+            "to": 5,
+            "label": "ε"
+          }
+        ],
+        "start": 4,
+        "accept": 5
+      },
+      "active": [],
+      "input_pos": 1
+    }
+  ]
+}
