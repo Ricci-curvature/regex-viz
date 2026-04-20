@@ -1,0 +1,68 @@
+{
+  "kind": "build",
+  "input": null,
+  "steps": [
+    {
+      "description": "literal 'a'",
+      "nfa": {
+        "states": [
+          0,
+          1
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 1,
+            "label": "a"
+          }
+        ],
+        "start": 0,
+        "accept": 1
+      },
+      "active": [],
+      "input_pos": null
+    },
+    {
+      "description": "star (a*)",
+      "nfa": {
+        "states": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 1,
+            "label": "a"
+          },
+          {
+            "from": 2,
+            "to": 0,
+            "label": "ε"
+          },
+          {
+            "from": 2,
+            "to": 3,
+            "label": "ε"
+          },
+          {
+            "from": 1,
+            "to": 0,
+            "label": "ε"
+          },
+          {
+            "from": 1,
+            "to": 3,
+            "label": "ε"
+          }
+        ],
+        "start": 2,
+        "accept": 3
+      },
+      "active": [],
+      "input_pos": null
+    }
+  ]
+}

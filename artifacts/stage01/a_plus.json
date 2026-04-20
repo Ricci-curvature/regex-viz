@@ -1,0 +1,57 @@
+{
+  "kind": "build",
+  "input": null,
+  "steps": [
+    {
+      "description": "literal 'a'",
+      "nfa": {
+        "states": [
+          0,
+          1
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 1,
+            "label": "a"
+          }
+        ],
+        "start": 0,
+        "accept": 1
+      },
+      "active": [],
+      "input_pos": null
+    },
+    {
+      "description": "plus (a+)",
+      "nfa": {
+        "states": [
+          0,
+          1,
+          2
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 1,
+            "label": "a"
+          },
+          {
+            "from": 1,
+            "to": 0,
+            "label": "ε"
+          },
+          {
+            "from": 1,
+            "to": 2,
+            "label": "ε"
+          }
+        ],
+        "start": 0,
+        "accept": 2
+      },
+      "active": [],
+      "input_pos": null
+    }
+  ]
+}

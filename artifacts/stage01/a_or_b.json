@@ -1,0 +1,102 @@
+{
+  "kind": "build",
+  "input": null,
+  "steps": [
+    {
+      "description": "literal 'a'",
+      "nfa": {
+        "states": [
+          0,
+          1
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 1,
+            "label": "a"
+          }
+        ],
+        "start": 0,
+        "accept": 1
+      },
+      "active": [],
+      "input_pos": null
+    },
+    {
+      "description": "literal 'b'",
+      "nfa": {
+        "states": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 1,
+            "label": "a"
+          },
+          {
+            "from": 2,
+            "to": 3,
+            "label": "b"
+          }
+        ],
+        "start": 2,
+        "accept": 3
+      },
+      "active": [],
+      "input_pos": null
+    },
+    {
+      "description": "alternation",
+      "nfa": {
+        "states": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "transitions": [
+          {
+            "from": 0,
+            "to": 1,
+            "label": "a"
+          },
+          {
+            "from": 2,
+            "to": 3,
+            "label": "b"
+          },
+          {
+            "from": 4,
+            "to": 0,
+            "label": "ε"
+          },
+          {
+            "from": 1,
+            "to": 5,
+            "label": "ε"
+          },
+          {
+            "from": 4,
+            "to": 2,
+            "label": "ε"
+          },
+          {
+            "from": 3,
+            "to": 5,
+            "label": "ε"
+          }
+        ],
+        "start": 4,
+        "accept": 5
+      },
+      "active": [],
+      "input_pos": null
+    }
+  ]
+}
