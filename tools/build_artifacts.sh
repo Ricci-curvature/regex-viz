@@ -7,7 +7,7 @@ set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-mkdir -p artifacts/stage01 artifacts/stage02
+mkdir -p artifacts/stage01 artifacts/stage02 artifacts/stage03
 
 # Stage 1: seven pinned regexes covering literal, concat, alt, star, plus,
 # alt-under-star, and mixed precedence.
@@ -67,6 +67,23 @@ for i in "${!stage02_names[@]}"; do
     out="artifacts/stage02/${name}.json"
     printf '  stage02/%-24s  %q × %q\n' "${name}.json" "$re" "$inp"
     cargo run --quiet --release --example 02_run_nfa -- "$re" "$inp" > "$out"
+done
+
+# Stage 3: subset construction. Six pinned regexes covering literal, concat,
+# alt (fan-out merging at start), star (start-is-accept), plus (start-is-not-
+# accept), and a mixed-operator regex that exercises every alphabet symbol.
+stage03_names=(a ab a_or_b a_star a_plus a_or_b_star_c)
+stage03_regex=('a' 'ab' 'a|b' 'a*' 'a+' '(a|b)*c')
+
+echo ">> cargo build --example 03_subset_construction --release"
+cargo build --release --example 03_subset_construction >/dev/null
+
+for i in "${!stage03_names[@]}"; do
+    name="${stage03_names[$i]}"
+    re="${stage03_regex[$i]}"
+    out="artifacts/stage03/${name}.json"
+    printf '  stage03/%-18s  %q\n' "${name}.json" "$re"
+    cargo run --quiet --release --example 03_subset_construction -- "$re" > "$out"
 done
 
 echo "done."
