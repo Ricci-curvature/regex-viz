@@ -7,7 +7,7 @@ set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-mkdir -p artifacts/stage01 artifacts/stage02 artifacts/stage03
+mkdir -p artifacts/stage01 artifacts/stage02 artifacts/stage03 artifacts/stage04
 
 # Stage 1: seven pinned regexes covering literal, concat, alt, star, plus,
 # alt-under-star, and mixed precedence.
@@ -84,6 +84,50 @@ for i in "${!stage03_names[@]}"; do
     out="artifacts/stage03/${name}.json"
     printf '  stage03/%-18s  %q\n' "${name}.json" "$re"
     cargo run --quiet --release --example 03_subset_construction -- "$re" > "$out"
+done
+
+# Stage 4: NFA vs DFA side-by-side on the same (regex, input) pairs used in
+# Stage 2 — reusing the pin set keeps the comparison honest (every verdict
+# must match the standalone matcher).
+stage04_names=(
+    a__match
+    a__miss
+    ab__match
+    ab__partial
+    ab__extra
+    a_or_b__match_a
+    a_or_b__miss
+    a_star__empty
+    a_star__match
+    a_star__miss
+    a_or_b_star_c__match
+    a_or_b_star_c__miss
+)
+stage04_regex=(
+    'a' 'a'
+    'ab' 'ab' 'ab'
+    'a|b' 'a|b'
+    'a*' 'a*' 'a*'
+    '(a|b)*c' '(a|b)*c'
+)
+stage04_input=(
+    'a' 'b'
+    'ab' 'a' 'abc'
+    'a' 'c'
+    '' 'aaa' 'aab'
+    'aabc' 'abab'
+)
+
+echo ">> cargo build --example 04_compare_nfa_dfa --release"
+cargo build --release --example 04_compare_nfa_dfa >/dev/null
+
+for i in "${!stage04_names[@]}"; do
+    name="${stage04_names[$i]}"
+    re="${stage04_regex[$i]}"
+    inp="${stage04_input[$i]}"
+    out="artifacts/stage04/${name}.json"
+    printf '  stage04/%-24s  %q × %q\n' "${name}.json" "$re" "$inp"
+    cargo run --quiet --release --example 04_compare_nfa_dfa -- "$re" "$inp" > "$out"
 done
 
 echo "done."

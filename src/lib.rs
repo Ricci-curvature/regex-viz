@@ -1,3 +1,4 @@
+pub mod comparison;
 pub mod dfa;
 pub mod matcher;
 pub mod nfa;
