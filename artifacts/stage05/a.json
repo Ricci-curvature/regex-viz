@@ -1,0 +1,150 @@
+{
+  "regex": "a",
+  "nfa": {
+    "states": [
+      0,
+      1
+    ],
+    "transitions": [
+      {
+        "from": 0,
+        "to": 1,
+        "label": "a"
+      }
+    ],
+    "start": 0,
+    "accept": 1
+  },
+  "alphabet": [
+    "a"
+  ],
+  "source_dfa_states": [
+    {
+      "id": 0,
+      "subset": [
+        0
+      ],
+      "is_accept": false
+    },
+    {
+      "id": 1,
+      "subset": [
+        1
+      ],
+      "is_accept": true
+    }
+  ],
+  "source_dfa_transitions": [
+    {
+      "from": 0,
+      "to": 1,
+      "label": "a"
+    }
+  ],
+  "sink_id": 2,
+  "steps": [
+    {
+      "description": "initial partition: {accept} | {non-accept} = {0,2} | {1}",
+      "partition": [
+        [
+          0,
+          2
+        ],
+        [
+          1
+        ]
+      ],
+      "splitter_block": null,
+      "symbol": null,
+      "split": null
+    },
+    {
+      "description": "splitter {1} on 'a': predecessors split {0,2} → {0} | {2}",
+      "partition": [
+        [
+          0
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "splitter_block": [
+        1
+      ],
+      "symbol": "a",
+      "split": {
+        "parent": [
+          0,
+          2
+        ],
+        "child_in": [
+          0
+        ],
+        "child_out": [
+          2
+        ]
+      }
+    },
+    {
+      "description": "fixed point: 3 block(s) → 3-state minimal DFA",
+      "partition": [
+        [
+          0
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "splitter_block": null,
+      "symbol": null,
+      "split": null
+    }
+  ],
+  "minimized": {
+    "states": [
+      {
+        "id": 0,
+        "block": [
+          0
+        ],
+        "is_accept": false,
+        "is_sink": false
+      },
+      {
+        "id": 1,
+        "block": [
+          1
+        ],
+        "is_accept": true,
+        "is_sink": false
+      },
+      {
+        "id": 2,
+        "block": [
+          2
+        ],
+        "is_accept": false,
+        "is_sink": true
+      }
+    ],
+    "transitions": [
+      {
+        "from": 0,
+        "to": 1,
+        "label": "a"
+      }
+    ],
+    "mapping": [
+      0,
+      1,
+      2
+    ],
+    "sink_block": 2
+  }
+}

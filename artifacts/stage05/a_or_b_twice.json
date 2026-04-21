@@ -1,0 +1,359 @@
+{
+  "regex": "(a|b)(a|b)",
+  "nfa": {
+    "states": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "transitions": [
+      {
+        "from": 0,
+        "to": 1,
+        "label": "a"
+      },
+      {
+        "from": 2,
+        "to": 3,
+        "label": "b"
+      },
+      {
+        "from": 4,
+        "to": 0,
+        "label": "ε"
+      },
+      {
+        "from": 1,
+        "to": 5,
+        "label": "ε"
+      },
+      {
+        "from": 4,
+        "to": 2,
+        "label": "ε"
+      },
+      {
+        "from": 3,
+        "to": 5,
+        "label": "ε"
+      },
+      {
+        "from": 6,
+        "to": 7,
+        "label": "a"
+      },
+      {
+        "from": 8,
+        "to": 9,
+        "label": "b"
+      },
+      {
+        "from": 10,
+        "to": 6,
+        "label": "ε"
+      },
+      {
+        "from": 7,
+        "to": 11,
+        "label": "ε"
+      },
+      {
+        "from": 10,
+        "to": 8,
+        "label": "ε"
+      },
+      {
+        "from": 9,
+        "to": 11,
+        "label": "ε"
+      },
+      {
+        "from": 5,
+        "to": 10,
+        "label": "ε"
+      }
+    ],
+    "start": 4,
+    "accept": 11
+  },
+  "alphabet": [
+    "a",
+    "b"
+  ],
+  "source_dfa_states": [
+    {
+      "id": 0,
+      "subset": [
+        0,
+        2,
+        4
+      ],
+      "is_accept": false
+    },
+    {
+      "id": 1,
+      "subset": [
+        1,
+        5,
+        6,
+        8,
+        10
+      ],
+      "is_accept": false
+    },
+    {
+      "id": 2,
+      "subset": [
+        3,
+        5,
+        6,
+        8,
+        10
+      ],
+      "is_accept": false
+    },
+    {
+      "id": 3,
+      "subset": [
+        7,
+        11
+      ],
+      "is_accept": true
+    },
+    {
+      "id": 4,
+      "subset": [
+        9,
+        11
+      ],
+      "is_accept": true
+    }
+  ],
+  "source_dfa_transitions": [
+    {
+      "from": 0,
+      "to": 1,
+      "label": "a"
+    },
+    {
+      "from": 0,
+      "to": 2,
+      "label": "b"
+    },
+    {
+      "from": 1,
+      "to": 3,
+      "label": "a"
+    },
+    {
+      "from": 1,
+      "to": 4,
+      "label": "b"
+    },
+    {
+      "from": 2,
+      "to": 3,
+      "label": "a"
+    },
+    {
+      "from": 2,
+      "to": 4,
+      "label": "b"
+    }
+  ],
+  "sink_id": 5,
+  "steps": [
+    {
+      "description": "initial partition: {accept} | {non-accept} = {0,1,2,5} | {3,4}",
+      "partition": [
+        [
+          0,
+          1,
+          2,
+          5
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "splitter_block": null,
+      "symbol": null,
+      "split": null
+    },
+    {
+      "description": "splitter {3,4} on 'a': predecessors split {0,1,2,5} → {1,2} | {0,5}",
+      "partition": [
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "splitter_block": [
+        3,
+        4
+      ],
+      "symbol": "a",
+      "split": {
+        "parent": [
+          0,
+          1,
+          2,
+          5
+        ],
+        "child_in": [
+          1,
+          2
+        ],
+        "child_out": [
+          0,
+          5
+        ]
+      }
+    },
+    {
+      "description": "splitter {1,2} on 'a': predecessors split {0,5} → {0} | {5}",
+      "partition": [
+        [
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          5
+        ]
+      ],
+      "splitter_block": [
+        1,
+        2
+      ],
+      "symbol": "a",
+      "split": {
+        "parent": [
+          0,
+          5
+        ],
+        "child_in": [
+          0
+        ],
+        "child_out": [
+          5
+        ]
+      }
+    },
+    {
+      "description": "fixed point: 4 block(s) → 4-state minimal DFA",
+      "partition": [
+        [
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          5
+        ]
+      ],
+      "splitter_block": null,
+      "symbol": null,
+      "split": null
+    }
+  ],
+  "minimized": {
+    "states": [
+      {
+        "id": 0,
+        "block": [
+          0
+        ],
+        "is_accept": false,
+        "is_sink": false
+      },
+      {
+        "id": 1,
+        "block": [
+          1,
+          2
+        ],
+        "is_accept": false,
+        "is_sink": false
+      },
+      {
+        "id": 2,
+        "block": [
+          3,
+          4
+        ],
+        "is_accept": true,
+        "is_sink": false
+      },
+      {
+        "id": 3,
+        "block": [
+          5
+        ],
+        "is_accept": false,
+        "is_sink": true
+      }
+    ],
+    "transitions": [
+      {
+        "from": 0,
+        "to": 1,
+        "label": "a"
+      },
+      {
+        "from": 0,
+        "to": 1,
+        "label": "b"
+      },
+      {
+        "from": 1,
+        "to": 2,
+        "label": "a"
+      },
+      {
+        "from": 1,
+        "to": 2,
+        "label": "b"
+      }
+    ],
+    "mapping": [
+      0,
+      1,
+      1,
+      2,
+      2,
+      3
+    ],
+    "sink_block": 3
+  }
+}

@@ -1,0 +1,207 @@
+{
+  "regex": "a|b",
+  "nfa": {
+    "states": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "transitions": [
+      {
+        "from": 0,
+        "to": 1,
+        "label": "a"
+      },
+      {
+        "from": 2,
+        "to": 3,
+        "label": "b"
+      },
+      {
+        "from": 4,
+        "to": 0,
+        "label": "ε"
+      },
+      {
+        "from": 1,
+        "to": 5,
+        "label": "ε"
+      },
+      {
+        "from": 4,
+        "to": 2,
+        "label": "ε"
+      },
+      {
+        "from": 3,
+        "to": 5,
+        "label": "ε"
+      }
+    ],
+    "start": 4,
+    "accept": 5
+  },
+  "alphabet": [
+    "a",
+    "b"
+  ],
+  "source_dfa_states": [
+    {
+      "id": 0,
+      "subset": [
+        0,
+        2,
+        4
+      ],
+      "is_accept": false
+    },
+    {
+      "id": 1,
+      "subset": [
+        1,
+        5
+      ],
+      "is_accept": true
+    },
+    {
+      "id": 2,
+      "subset": [
+        3,
+        5
+      ],
+      "is_accept": true
+    }
+  ],
+  "source_dfa_transitions": [
+    {
+      "from": 0,
+      "to": 1,
+      "label": "a"
+    },
+    {
+      "from": 0,
+      "to": 2,
+      "label": "b"
+    }
+  ],
+  "sink_id": 3,
+  "steps": [
+    {
+      "description": "initial partition: {accept} | {non-accept} = {0,3} | {1,2}",
+      "partition": [
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "splitter_block": null,
+      "symbol": null,
+      "split": null
+    },
+    {
+      "description": "splitter {1,2} on 'a': predecessors split {0,3} → {0} | {3}",
+      "partition": [
+        [
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          3
+        ]
+      ],
+      "splitter_block": [
+        1,
+        2
+      ],
+      "symbol": "a",
+      "split": {
+        "parent": [
+          0,
+          3
+        ],
+        "child_in": [
+          0
+        ],
+        "child_out": [
+          3
+        ]
+      }
+    },
+    {
+      "description": "fixed point: 3 block(s) → 3-state minimal DFA",
+      "partition": [
+        [
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          3
+        ]
+      ],
+      "splitter_block": null,
+      "symbol": null,
+      "split": null
+    }
+  ],
+  "minimized": {
+    "states": [
+      {
+        "id": 0,
+        "block": [
+          0
+        ],
+        "is_accept": false,
+        "is_sink": false
+      },
+      {
+        "id": 1,
+        "block": [
+          1,
+          2
+        ],
+        "is_accept": true,
+        "is_sink": false
+      },
+      {
+        "id": 2,
+        "block": [
+          3
+        ],
+        "is_accept": false,
+        "is_sink": true
+      }
+    ],
+    "transitions": [
+      {
+        "from": 0,
+        "to": 1,
+        "label": "a"
+      },
+      {
+        "from": 0,
+        "to": 1,
+        "label": "b"
+      }
+    ],
+    "mapping": [
+      0,
+      1,
+      1,
+      2
+    ],
+    "sink_block": 2
+  }
+}
