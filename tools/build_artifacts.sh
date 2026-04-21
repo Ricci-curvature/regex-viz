@@ -7,7 +7,7 @@ set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-mkdir -p artifacts/stage01 artifacts/stage02 artifacts/stage03 artifacts/stage04
+mkdir -p artifacts/stage01 artifacts/stage02 artifacts/stage03 artifacts/stage04 artifacts/stage05
 
 # Stage 1: seven pinned regexes covering literal, concat, alt, star, plus,
 # alt-under-star, and mixed precedence.
@@ -128,6 +128,46 @@ for i in "${!stage04_names[@]}"; do
     out="artifacts/stage04/${name}.json"
     printf '  stage04/%-24s  %q × %q\n' "${name}.json" "$re" "$inp"
     cargo run --quiet --release --example 04_compare_nfa_dfa -- "$re" "$inp" > "$out"
+done
+
+# Stage 5: Hopcroft DFA minimization. Six carryover pins from Stage 3 (for
+# continuity — same regexes, now with the minimal DFA beside them) plus three
+# teaching pins that specifically show block merges:
+#   - aa|ab          → two symmetric leaf accepts merge
+#   - abc|axc        → symmetric inner states merge
+#   - (a|b)(a|b)     → strings of length exactly 2 over {a,b}; merges by length
+stage05_names=(
+    a
+    ab
+    a_or_b
+    a_star
+    a_plus
+    a_or_b_star_c
+    aa_or_ab
+    abc_or_axc
+    a_or_b_twice
+)
+stage05_regex=(
+    'a'
+    'ab'
+    'a|b'
+    'a*'
+    'a+'
+    '(a|b)*c'
+    'aa|ab'
+    'abc|axc'
+    '(a|b)(a|b)'
+)
+
+echo ">> cargo build --example 05_minimize_dfa --release"
+cargo build --release --example 05_minimize_dfa >/dev/null
+
+for i in "${!stage05_names[@]}"; do
+    name="${stage05_names[$i]}"
+    re="${stage05_regex[$i]}"
+    out="artifacts/stage05/${name}.json"
+    printf '  stage05/%-24s  %q\n' "${name}.json" "$re"
+    cargo run --quiet --release --example 05_minimize_dfa -- "$re" > "$out"
 done
 
 echo "done."
