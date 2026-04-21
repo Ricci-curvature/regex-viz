@@ -28,6 +28,18 @@ export type DfaGraphProps = {
   focus?: number | null;
   /** Show the NFA subset beneath each D-node label (default: true). */
   showSubset?: boolean;
+  /** Per-node fill override. Takes precedence over focus/accept defaults.
+   * Stage 5 uses this to color nodes by partition block. */
+  blockFill?: Record<number, string>;
+  /** State ids that should get a thick, focus-colored outline without
+   * changing fill. Stage 5 draws the splitter block's members this way. */
+  outlineIds?: number[];
+  /** If set, the node with this id is rendered as the implicit sink:
+   * dashed outline, grey fill, `∅` label, no subset caption. */
+  sinkId?: number | null;
+  /** Custom caption renderer beneath each D-node label. Falls back to
+   * `{subset}` when absent. Return empty string to hide the caption. */
+  subsetLabel?: (state: DfaState) => string;
   className?: string;
 };
 
@@ -36,8 +48,13 @@ export function DfaGraph({
   transitions,
   focus = null,
   showSubset = true,
+  blockFill,
+  outlineIds,
+  sinkId = null,
+  subsetLabel,
   className,
 }: DfaGraphProps) {
+  const outlineSet = outlineIds ? new Set(outlineIds) : null;
   const layout = useMemo(
     () => computeLayout(states, transitions),
     [states, transitions],
@@ -121,10 +138,25 @@ export function DfaGraph({
         const n = layout.nodes[s.id];
         if (!n) return null;
         const isFocus = s.id === focus;
-        const fill = isFocus ? "#ffd866" : s.is_accept ? "#d3e4ff" : "#ffffff";
+        const isOutlined = outlineSet?.has(s.id) ?? false;
+        const isSink = sinkId != null && s.id === sinkId;
+        const overrideFill = blockFill?.[s.id];
+        const fill = isSink
+          ? "#ececec"
+          : overrideFill ??
+            (isFocus ? "#ffd866" : s.is_accept ? "#d3e4ff" : "#ffffff");
+        const strokeColor = isFocus || isOutlined ? "#c79500" : "#222";
+        const strokeWidth = isFocus || isOutlined ? 2.5 : 1.5;
+        const dashed = isSink ? "3 3" : undefined;
+        const label = isSink ? "∅" : `D${s.id}`;
+        const caption = isSink
+          ? ""
+          : subsetLabel
+            ? subsetLabel(s)
+            : `{${s.subset.join(",")}}`;
         return (
           <g key={s.id}>
-            {s.is_accept && (
+            {s.is_accept && !isSink && (
               <circle
                 cx={n.x}
                 cy={n.y}
@@ -139,8 +171,9 @@ export function DfaGraph({
               cy={n.y}
               r={NODE_R}
               fill={fill}
-              stroke={isFocus ? "#c79500" : "#222"}
-              strokeWidth={isFocus ? 2.5 : 1.5}
+              stroke={strokeColor}
+              strokeWidth={strokeWidth}
+              strokeDasharray={dashed}
             />
             <text
               x={n.x}
@@ -148,10 +181,11 @@ export function DfaGraph({
               textAnchor="middle"
               fontSize="13"
               fontWeight={600}
+              fill={isSink ? "#777" : "#000"}
             >
-              D{s.id}
+              {label}
             </text>
-            {showSubset && (
+            {showSubset && caption && (
               <text
                 x={n.x}
                 y={n.y + NODE_R + 14}
@@ -159,7 +193,7 @@ export function DfaGraph({
                 fontSize="11"
                 fill="#555"
               >
-                {`{${s.subset.join(",")}}`}
+                {caption}
               </text>
             )}
           </g>
