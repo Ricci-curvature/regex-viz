@@ -1,0 +1,176 @@
+{
+  "regex": "ab",
+  "nfa": {
+    "states": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "transitions": [
+      {
+        "from": 0,
+        "to": 1,
+        "label": "a"
+      },
+      {
+        "from": 2,
+        "to": 3,
+        "label": "b"
+      },
+      {
+        "from": 1,
+        "to": 2,
+        "label": "ε"
+      }
+    ],
+    "start": 0,
+    "accept": 3
+  },
+  "alphabet": [
+    "a",
+    "b"
+  ],
+  "steps": [
+    {
+      "description": "alphabet Σ = {a,b}",
+      "dfa_states": [],
+      "dfa_transitions": [],
+      "focus_dfa_state": null,
+      "focus_nfa_subset": []
+    },
+    {
+      "description": "D0 = ε-closure({0}) = {0}",
+      "dfa_states": [
+        {
+          "id": 0,
+          "subset": [
+            0
+          ],
+          "is_accept": false
+        }
+      ],
+      "dfa_transitions": [],
+      "focus_dfa_state": 0,
+      "focus_nfa_subset": [
+        0
+      ]
+    },
+    {
+      "description": "D0 --a--> D1 (new: ε-closure(move(D0, a)) = {1,2})",
+      "dfa_states": [
+        {
+          "id": 0,
+          "subset": [
+            0
+          ],
+          "is_accept": false
+        },
+        {
+          "id": 1,
+          "subset": [
+            1,
+            2
+          ],
+          "is_accept": false
+        }
+      ],
+      "dfa_transitions": [
+        {
+          "from": 0,
+          "to": 1,
+          "label": "a"
+        }
+      ],
+      "focus_dfa_state": 1,
+      "focus_nfa_subset": [
+        1,
+        2
+      ]
+    },
+    {
+      "description": "D1 --b--> D2 (new: ε-closure(move(D1, b)) = {3})",
+      "dfa_states": [
+        {
+          "id": 0,
+          "subset": [
+            0
+          ],
+          "is_accept": false
+        },
+        {
+          "id": 1,
+          "subset": [
+            1,
+            2
+          ],
+          "is_accept": false
+        },
+        {
+          "id": 2,
+          "subset": [
+            3
+          ],
+          "is_accept": true
+        }
+      ],
+      "dfa_transitions": [
+        {
+          "from": 0,
+          "to": 1,
+          "label": "a"
+        },
+        {
+          "from": 1,
+          "to": 2,
+          "label": "b"
+        }
+      ],
+      "focus_dfa_state": 2,
+      "focus_nfa_subset": [
+        3
+      ]
+    },
+    {
+      "description": "done: 3 DFA state(s), accept = {2}",
+      "dfa_states": [
+        {
+          "id": 0,
+          "subset": [
+            0
+          ],
+          "is_accept": false
+        },
+        {
+          "id": 1,
+          "subset": [
+            1,
+            2
+          ],
+          "is_accept": false
+        },
+        {
+          "id": 2,
+          "subset": [
+            3
+          ],
+          "is_accept": true
+        }
+      ],
+      "dfa_transitions": [
+        {
+          "from": 0,
+          "to": 1,
+          "label": "a"
+        },
+        {
+          "from": 1,
+          "to": 2,
+          "label": "b"
+        }
+      ],
+      "focus_dfa_state": null,
+      "focus_nfa_subset": []
+    }
+  ]
+}
