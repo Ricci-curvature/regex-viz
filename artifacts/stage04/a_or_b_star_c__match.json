@@ -1,0 +1,259 @@
+{
+  "regex": "(a|b)*c",
+  "input": "aabc",
+  "nfa": {
+    "states": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "transitions": [
+      {
+        "from": 0,
+        "to": 1,
+        "label": "a"
+      },
+      {
+        "from": 2,
+        "to": 3,
+        "label": "b"
+      },
+      {
+        "from": 4,
+        "to": 0,
+        "label": "ε"
+      },
+      {
+        "from": 1,
+        "to": 5,
+        "label": "ε"
+      },
+      {
+        "from": 4,
+        "to": 2,
+        "label": "ε"
+      },
+      {
+        "from": 3,
+        "to": 5,
+        "label": "ε"
+      },
+      {
+        "from": 6,
+        "to": 4,
+        "label": "ε"
+      },
+      {
+        "from": 6,
+        "to": 7,
+        "label": "ε"
+      },
+      {
+        "from": 5,
+        "to": 4,
+        "label": "ε"
+      },
+      {
+        "from": 5,
+        "to": 7,
+        "label": "ε"
+      },
+      {
+        "from": 8,
+        "to": 9,
+        "label": "c"
+      },
+      {
+        "from": 7,
+        "to": 8,
+        "label": "ε"
+      }
+    ],
+    "start": 6,
+    "accept": 9
+  },
+  "alphabet": [
+    "a",
+    "b",
+    "c"
+  ],
+  "dfa_states": [
+    {
+      "id": 0,
+      "subset": [
+        0,
+        2,
+        4,
+        6,
+        7,
+        8
+      ],
+      "is_accept": false
+    },
+    {
+      "id": 1,
+      "subset": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        8
+      ],
+      "is_accept": false
+    },
+    {
+      "id": 2,
+      "subset": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        7,
+        8
+      ],
+      "is_accept": false
+    },
+    {
+      "id": 3,
+      "subset": [
+        9
+      ],
+      "is_accept": true
+    }
+  ],
+  "dfa_transitions": [
+    {
+      "from": 0,
+      "to": 1,
+      "label": "a"
+    },
+    {
+      "from": 0,
+      "to": 2,
+      "label": "b"
+    },
+    {
+      "from": 0,
+      "to": 3,
+      "label": "c"
+    },
+    {
+      "from": 1,
+      "to": 1,
+      "label": "a"
+    },
+    {
+      "from": 1,
+      "to": 2,
+      "label": "b"
+    },
+    {
+      "from": 1,
+      "to": 3,
+      "label": "c"
+    },
+    {
+      "from": 2,
+      "to": 1,
+      "label": "a"
+    },
+    {
+      "from": 2,
+      "to": 2,
+      "label": "b"
+    },
+    {
+      "from": 2,
+      "to": 3,
+      "label": "c"
+    }
+  ],
+  "steps": [
+    {
+      "description": "start: NFA ε-closure({6}) = {0,2,4,6,7,8}, DFA D0",
+      "input_pos": 0,
+      "nfa_active": [
+        0,
+        2,
+        4,
+        6,
+        7,
+        8
+      ],
+      "dfa_current": 0
+    },
+    {
+      "description": "consume 'a' at pos 0 → NFA {0,1,2,4,5,7,8}, DFA D1",
+      "input_pos": 1,
+      "nfa_active": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        8
+      ],
+      "dfa_current": 1
+    },
+    {
+      "description": "consume 'a' at pos 1 → NFA {0,1,2,4,5,7,8}, DFA D1",
+      "input_pos": 2,
+      "nfa_active": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        8
+      ],
+      "dfa_current": 1
+    },
+    {
+      "description": "consume 'b' at pos 2 → NFA {0,2,3,4,5,7,8}, DFA D2",
+      "input_pos": 3,
+      "nfa_active": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        7,
+        8
+      ],
+      "dfa_current": 2
+    },
+    {
+      "description": "consume 'c' at pos 3 → NFA {9}, DFA D3",
+      "input_pos": 4,
+      "nfa_active": [
+        9
+      ],
+      "dfa_current": 3
+    },
+    {
+      "description": "verdict: NFA match, DFA match — agree",
+      "input_pos": 4,
+      "nfa_active": [
+        9
+      ],
+      "dfa_current": 3
+    }
+  ],
+  "summary": {
+    "nfa_accepted": true,
+    "dfa_accepted": true,
+    "verdicts_agree": true
+  }
+}

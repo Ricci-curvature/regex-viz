@@ -1,0 +1,115 @@
+{
+  "regex": "ab",
+  "input": "abc",
+  "nfa": {
+    "states": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "transitions": [
+      {
+        "from": 0,
+        "to": 1,
+        "label": "a"
+      },
+      {
+        "from": 2,
+        "to": 3,
+        "label": "b"
+      },
+      {
+        "from": 1,
+        "to": 2,
+        "label": "ε"
+      }
+    ],
+    "start": 0,
+    "accept": 3
+  },
+  "alphabet": [
+    "a",
+    "b"
+  ],
+  "dfa_states": [
+    {
+      "id": 0,
+      "subset": [
+        0
+      ],
+      "is_accept": false
+    },
+    {
+      "id": 1,
+      "subset": [
+        1,
+        2
+      ],
+      "is_accept": false
+    },
+    {
+      "id": 2,
+      "subset": [
+        3
+      ],
+      "is_accept": true
+    }
+  ],
+  "dfa_transitions": [
+    {
+      "from": 0,
+      "to": 1,
+      "label": "a"
+    },
+    {
+      "from": 1,
+      "to": 2,
+      "label": "b"
+    }
+  ],
+  "steps": [
+    {
+      "description": "start: NFA ε-closure({0}) = {0}, DFA D0",
+      "input_pos": 0,
+      "nfa_active": [
+        0
+      ],
+      "dfa_current": 0
+    },
+    {
+      "description": "consume 'a' at pos 0 → NFA {1,2}, DFA D1",
+      "input_pos": 1,
+      "nfa_active": [
+        1,
+        2
+      ],
+      "dfa_current": 1
+    },
+    {
+      "description": "consume 'b' at pos 1 → NFA {3}, DFA D2",
+      "input_pos": 2,
+      "nfa_active": [
+        3
+      ],
+      "dfa_current": 2
+    },
+    {
+      "description": "consume 'c' at pos 2 → NFA {}, DFA ∅",
+      "input_pos": 3,
+      "nfa_active": [],
+      "dfa_current": null
+    },
+    {
+      "description": "verdict: NFA reject, DFA reject — agree",
+      "input_pos": 3,
+      "nfa_active": [],
+      "dfa_current": null
+    }
+  ],
+  "summary": {
+    "nfa_accepted": false,
+    "dfa_accepted": false,
+    "verdicts_agree": true
+  }
+}

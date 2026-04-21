@@ -1,0 +1,133 @@
+{
+  "regex": "a*",
+  "input": "aaa",
+  "nfa": {
+    "states": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "transitions": [
+      {
+        "from": 0,
+        "to": 1,
+        "label": "a"
+      },
+      {
+        "from": 2,
+        "to": 0,
+        "label": "ε"
+      },
+      {
+        "from": 2,
+        "to": 3,
+        "label": "ε"
+      },
+      {
+        "from": 1,
+        "to": 0,
+        "label": "ε"
+      },
+      {
+        "from": 1,
+        "to": 3,
+        "label": "ε"
+      }
+    ],
+    "start": 2,
+    "accept": 3
+  },
+  "alphabet": [
+    "a"
+  ],
+  "dfa_states": [
+    {
+      "id": 0,
+      "subset": [
+        0,
+        2,
+        3
+      ],
+      "is_accept": true
+    },
+    {
+      "id": 1,
+      "subset": [
+        0,
+        1,
+        3
+      ],
+      "is_accept": true
+    }
+  ],
+  "dfa_transitions": [
+    {
+      "from": 0,
+      "to": 1,
+      "label": "a"
+    },
+    {
+      "from": 1,
+      "to": 1,
+      "label": "a"
+    }
+  ],
+  "steps": [
+    {
+      "description": "start: NFA ε-closure({2}) = {0,2,3}, DFA D0",
+      "input_pos": 0,
+      "nfa_active": [
+        0,
+        2,
+        3
+      ],
+      "dfa_current": 0
+    },
+    {
+      "description": "consume 'a' at pos 0 → NFA {0,1,3}, DFA D1",
+      "input_pos": 1,
+      "nfa_active": [
+        0,
+        1,
+        3
+      ],
+      "dfa_current": 1
+    },
+    {
+      "description": "consume 'a' at pos 1 → NFA {0,1,3}, DFA D1",
+      "input_pos": 2,
+      "nfa_active": [
+        0,
+        1,
+        3
+      ],
+      "dfa_current": 1
+    },
+    {
+      "description": "consume 'a' at pos 2 → NFA {0,1,3}, DFA D1",
+      "input_pos": 3,
+      "nfa_active": [
+        0,
+        1,
+        3
+      ],
+      "dfa_current": 1
+    },
+    {
+      "description": "verdict: NFA match, DFA match — agree",
+      "input_pos": 3,
+      "nfa_active": [
+        0,
+        1,
+        3
+      ],
+      "dfa_current": 1
+    }
+  ],
+  "summary": {
+    "nfa_accepted": true,
+    "dfa_accepted": true,
+    "verdicts_agree": true
+  }
+}
