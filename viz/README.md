@@ -1,16 +1,18 @@
 # viz — React components for trace visualization
 
-Six files, source only. Consuming sites (riccilab.dev blog) vendor these
+Eight files, source only. Consuming sites (riccilab.dev blog) vendor these
 directly; this repo does not ship its own `package.json`, bundler, or build
 step. Runtime contract: React 18+, `dagre` (or `@dagrejs/dagre`) in scope.
 
 ```
 trace.ts               — TypeScript mirror of src/trace.rs.
 construction.ts        — TypeScript mirror of src/dfa.rs (Stage 3).
+comparison.ts          — TypeScript mirror of src/comparison.rs (Stage 4).
 NfaGraph.tsx           — dagre layout + SVG for NFA. ~120 loc.
 DfaGraph.tsx           — dagre layout + SVG for DFA. ~160 loc.
 TraceViewer.tsx        — slider + NfaGraph (Stage 1/2). ~90 loc.
 ConstructionViewer.tsx — slider + NfaGraph + DfaGraph, 2-pane (Stage 3). ~130 loc.
+ComparisonViewer.tsx   — slider + InputStrip + NfaGraph + DfaGraph (Stage 4). ~200 loc.
 ```
 
 ## Vendor into the blog
@@ -29,6 +31,12 @@ import subsetAorBStarC from "../path/to/artifacts/stage03/a_or_b_star_c.json";
 import { ConstructionViewer } from "../path/to/viz/ConstructionViewer";
 
 <ConstructionViewer trace={subsetAorBStarC} />
+
+// Stage 4 — NFA vs DFA on the same input (ComparisonTrace)
+import cmpAorBStarC from "../path/to/artifacts/stage04/a_or_b_star_c__match.json";
+import { ComparisonViewer } from "../path/to/viz/ComparisonViewer";
+
+<ComparisonViewer trace={cmpAorBStarC} />
 ```
 
 The blog's bundler resolves `dagre` from its own `node_modules`. If the blog
